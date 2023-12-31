@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SliverAppBar(
       floating: true,
-      toolbarHeight: 24,
+      toolbarHeight: 40,
       leadingWidth: 180.0,
       leading: Padding(
         padding: EdgeInsets.only(left: 12.0),
