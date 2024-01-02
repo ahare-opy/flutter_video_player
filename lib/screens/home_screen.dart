@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_video_player/data.dart';
 import 'package:flutter_video_player/widgets/custom_app_bar.dart';
 import 'package:flutter_video_player/widgets/video_card.dart';
 
+final selectedVideoProvider = StateProvider<Video?>((ref) => null);
+
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.onTap, required this.videos});
+
+  final void Function(Video video) onTap;
+  final List<Video> videos;
 
   @override
   State<HomeScreen> createState() {
@@ -30,10 +36,13 @@ class _HomeScreen extends State<HomeScreen> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final video = videos[index];
-                return VideoCard(video: video);
+                final video = widget.videos[index];
+                return VideoCard(
+                  video: video,
+                  onTap: widget.onTap,
+                );
               },
-              childCount: videos.length,
+              childCount: widget.videos.length,
             ),
           ),
         ],
