@@ -17,23 +17,38 @@ class VideoScreen extends StatefulWidget {
 
 class _VideoScreen extends State<VideoScreen> {
   @override
+  void initState() {
+    widget.video.likes = 12000;
+    widget.video.mash_allah = 12000;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(top: 44.0),
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: CustomScrollView(
-          shrinkWrap: true,
-          slivers: [
-            SliverToBoxAdapter(
-              child: VideoPlayerWidget(
-                videoUrl: widget.video.manifest,
-                onTap: widget.onTap,
-              ),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 44.0),
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: CustomScrollView(
+              shrinkWrap: true,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: VideoPlayerWidget(
+                    videoUrl: widget.video.manifest,
+                    onTap: widget.onTap,
+                  ),
+                ),
+              ],
             ),
-            //VideoInfo(video: widget.video),
-          ],
-        ),
+          ),
+          VideoInfo(video: widget.video),
+          const SizedBox(
+            height: 8.0,
+          ),
+          const Divider(),
+        ],
       ),
     );
   }

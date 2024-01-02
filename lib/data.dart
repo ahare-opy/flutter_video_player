@@ -47,8 +47,10 @@ class Video {
   final String viewers;
   final String duration;
   final String object_type;
+  int mash_allah;
+  int likes;
 
-  const Video({
+  Video({
     required this.thumbnail,
     required this.id,
     required this.title,
@@ -69,6 +71,8 @@ class Video {
     required this.viewers,
     required this.duration,
     required this.object_type,
+    this.likes = 0,
+    this.mash_allah = 0,
   });
 
   set state(Video state) {}

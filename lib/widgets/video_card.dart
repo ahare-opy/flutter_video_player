@@ -78,7 +78,7 @@ class VideoCard extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          '${video.viewers} views . ${timeago.format(DateTime.parse(video.date_and_time))}',
+                          '${video.viewers} views • ${timeago.format(DateTime.parse(video.date_and_time))}',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
